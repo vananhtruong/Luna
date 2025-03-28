@@ -1,0 +1,43 @@
+﻿@model Feedback
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Feedback</h1>
+
+<div class="card mt-4">
+    <div class="card-header">
+        <h2>We would love to hear your feedback!</h2>
+    </div>
+
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" class="form-control" value="@ViewBag.Id" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="OrderId" class="form-control" value="@ViewBag.OrderId" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <textarea asp-for="Message" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Show" class="form-control" value="false" />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

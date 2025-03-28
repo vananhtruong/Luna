@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luna", "Luna\Luna.csproj", "{98CC071D-110C-4C99-B72E-4F70BB9F455C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunaBusinessObject", "LunaBusinessObject\LunaBusinessObject.csproj", "{A38DDFEC-9E01-4CF7-B3BD-A316F00E9409}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunaDataAccessLayer", "LunaDataAccessLayer\LunaDataAccessLayer.csproj", "{EDBB0136-BD69-487D-ABD7-FD5256EFA074}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunaRepositories", "LunaRepositories\LunaRepositories.csproj", "{F7571267-F837-4A2E-B657-8331903A8806}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98CC071D-110C-4C99-B72E-4F70BB9F455C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98CC071D-110C-4C99-B72E-4F70BB9F455C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98CC071D-110C-4C99-B72E-4F70BB9F455C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98CC071D-110C-4C99-B72E-4F70BB9F455C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A38DDFEC-9E01-4CF7-B3BD-A316F00E9409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38DDFEC-9E01-4CF7-B3BD-A316F00E9409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38DDFEC-9E01-4CF7-B3BD-A316F00E9409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38DDFEC-9E01-4CF7-B3BD-A316F00E9409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDBB0136-BD69-487D-ABD7-FD5256EFA074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDBB0136-BD69-487D-ABD7-FD5256EFA074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDBB0136-BD69-487D-ABD7-FD5256EFA074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDBB0136-BD69-487D-ABD7-FD5256EFA074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7571267-F837-4A2E-B657-8331903A8806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7571267-F837-4A2E-B657-8331903A8806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7571267-F837-4A2E-B657-8331903A8806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7571267-F837-4A2E-B657-8331903A8806}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D291AC52-4B0A-45A0-8418-C36D70A4B131}
+	EndGlobalSection
+EndGlobal
