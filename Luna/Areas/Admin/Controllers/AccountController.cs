@@ -161,75 +161,7 @@ namespace Luna.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: Account/Create
-        //[HttpPost]
-        //public async Task<IActionResult> Create(StaffInfor model, IFormFile? ImageUrl)
-        //{
-        //    Console.WriteLine($"code da qua day  modestate.isvalid = {ModelState.IsValid}");
-        //    if (ModelState.IsValid)
-        //    {
-        //        //var user = CreateUser();
-        //        string Image = "thuha.jpg";
-        //        if (ImageUrl != null)
-        //        {
-        //            // Generate a unique file name using GUID
-        //            var fileExtension = Path.GetExtension(ImageUrl.FileName);
-        //            var uniqueFileName = $"{Guid.NewGuid()}{fileExtension}";
-        //            Image = uniqueFileName;
-        //            var filePath = Path.Combine("wwwroot/images", uniqueFileName);
-        //            using (var fileStream = new FileStream(filePath, FileMode.Create))
-        //            {
-        //                await ImageUrl.CopyToAsync(fileStream);
-        //            }
-        //        }
-        //        var user = new ApplicationUser
-        //        {
-        //            UserName = model.UserName,
-        //            Email = model.Email,
-        //            FullName = model.FullName,
-        //            DateOfBirth = model.DateOfBirth,
-        //            PhoneNumber = model.PhoneNumber,
-        //            Address = model.Address,
-        //            ImageUrl = Image
-        //        };
-
-        //        // Print the properties of the user object to the console
-        //        Console.WriteLine($"UserName: {user.UserName}");
-        //        Console.WriteLine($"Email: {user.Email}");
-        //        Console.WriteLine($"FullName: {user.FullName}");
-        //        Console.WriteLine($"DateOfBirth: {user.DateOfBirth?.ToString("yyyy-MM-dd") ?? "N/A"}");
-        //        Console.WriteLine($"PhoneNumber: {user.PhoneNumber}");
-        //        Console.WriteLine($"Address: {user.Address}");
-        //        Console.WriteLine($"ImageUrl: {user.ImageUrl}");
-
-
-
-        //        var result = await _userManager.CreateAsync(user, model.Password);
-        //        Console.WriteLine($"check  result.Succeeded = {result.Succeeded}");
-
-
-        //        // Populate errorList
-        //        if (!result.Succeeded)
-        //        {
-        //            foreach (var error in result.Errors)
-        //            {
-        //                Console.WriteLine($"Error: {error.Code} - {error.Description}");
-        //            }
-
-        //        }
-        //        if (result.Succeeded)
-        //        {                   
-        //            await _userManager.AddToRoleAsync(user, Roles.Role_Receptionist);
-        //            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-        //            var result1 = await _userManager.ConfirmEmailAsync(user, code);
-        //        }
-
-        //    }
-
-        //    Console.WriteLine("DONE");
-        //    // If we got this far, something failed; redisplay form
-        //    return RedirectToAction("Index");
-        //}
+        
         [HttpPost]
         public async Task<IActionResult> Create(StaffInfor model, IFormFile? ImageUrl)
         {
@@ -295,22 +227,6 @@ namespace Luna.Areas.Admin.Controllers
             // If we got this far, something failed; redisplay form
             return View(model);
         }
-
-        private ApplicationUser CreateUser()
-        {
-            try
-            {
-                Console.WriteLine("create user");
-                return Activator.CreateInstance<ApplicationUser>();
-            }
-            catch
-            {
-                Console.WriteLine("loi create user");
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
-                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
-                    $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
-            }
-        }
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
@@ -367,9 +283,7 @@ namespace Luna.Areas.Admin.Controllers
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                // Xử lý ngoại lệ DbUpdateConcurrencyException
                 Console.WriteLine($"AAAAA Loi {ex.Message}");
-                // Hiển thị lại form với thông báo lỗi nếu có lỗi xảy ra
                 return View(updatedUser);
             }
         }

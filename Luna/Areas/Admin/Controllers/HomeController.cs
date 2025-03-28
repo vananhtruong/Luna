@@ -1,6 +1,7 @@
 ﻿using Luna.Data;
 using Luna.Models;
 using Luna.Utility;
+using LunaRepositories.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Mvc;
@@ -12,13 +13,17 @@ namespace Luna.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
+        private readonly IHotelOrderRepository _hotelOrderRepository;
         private readonly AppDbContext _db;
+        private readonly IRoomOrdersRepository _roomOrderRepository;
 
         // Use this constructor for dependency injection
         [ActivatorUtilitiesConstructor]
-        public HomeController(AppDbContext db)
+        public HomeController(AppDbContext db, IHotelOrderRepository hotelOrderRepository, IRoomOrdersRepository roomOrderRepository)
         {
             _db = db;
+            _hotelOrderRepository = hotelOrderRepository;
+            _roomOrderRepository = roomOrderRepository;
         }
 
 
@@ -26,9 +31,9 @@ namespace Luna.Areas.Admin.Controllers
         {
             if (year == null) {
                 ViewBag.Year = null;
-                var listOrder = _db.HotelOrders.ToList();
+                var listOrder = _hotelOrderRepository.GetHotelOrders();
                 ViewBag.numberOfOrder = listOrder.Count;
-                var listroomOrder = _db.RoomOrders.ToList();
+                var listroomOrder = _roomOrderRepository.GetRoomOrders();
                 ViewBag.numberRoomOrder = listroomOrder.Count();
                 var listCustomer = _db.Customers.ToList();
                 ViewBag.numberCustomer = listCustomer.Count;
@@ -61,7 +66,7 @@ namespace Luna.Areas.Admin.Controllers
                 }
                 ViewBag.monthlyOrderCounts = monthlyOrderCounts;
                 // tinh theo customer theo thang by year
-                var listroomorder = _db.RoomOrders.ToList();
+                var listroomorder = _roomOrderRepository.GetRoomOrders();
 
                 var customerFollowYear = from customer in listCustomer
                                          join room in listroomorder

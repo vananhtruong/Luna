@@ -41,9 +41,16 @@ builder.Services.AddDbContext<LunaContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 //Dao
 builder.Services.AddScoped<AspNetUserDAO>();
+builder.Services.AddScoped<HotelOrderDAO>();
+builder.Services.AddScoped<FeedbackDAO>();
+builder.Services.AddScoped<RoomOrdersDAO>();
 
 //Repository
 builder.Services.AddScoped<IAspNetUserRepository, AspNetUserRepository>();
+builder.Services.AddScoped<IHotelOrderRepository, HotelOrderRepository>();
+builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
+builder.Services.AddScoped<IRoomOrdersRepository, RoomOrdersRepository>();
+
 
 
 

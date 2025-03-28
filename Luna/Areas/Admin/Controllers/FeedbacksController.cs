@@ -26,28 +26,11 @@ namespace Luna.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: Admin/Feedbacks
-        //public async Task<IActionResult> Index(int? page)
-        //{
-        //    int pageSize = 10;
-        //    int pageNumber = page == null || page < 0 ? 1 : page.Value;
-        //    var appDbContext = _context.Feedbacks.Include(f => f.Order).Include(f => f.User);
-        //    return View(await appDbContext.ToListAsync());
-        //}
-
         public async Task<IActionResult> Index(int? page)
         {
             int pageSize = 12;
             int pageNumber = page == null || page < 0 ? 1 : page.Value;
             var feedbacks = _context.Feedbacks.Include(f => f.Order).Include(f => f.User);
-
-            //code chi lay nhung feedback duowc show
-            //var feedbacks = _context.Feedbacks
-            //.Include(f => f.Order)
-            //.Include(f => f.User)
-            //.Where(f => f.Show == true);
-
-            // Create a paginated list of feedbacks
             var pagedFeedbacks = await feedbacks.ToPagedListAsync(pageNumber, pageSize);
 
             return View(pagedFeedbacks);
