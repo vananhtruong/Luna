@@ -14,6 +14,10 @@ using Microsoft.ML;
 using Hangfire;
 using Hangfire.SqlServer;
 using Hangfire.Dashboard;
+using LunaBusinessObject;
+using LunaDataAccessLayer;
+using LunaRepositories.Interface;
+using LunaRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +35,16 @@ builder.Services.AddTransient<IMailService, MailService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Add services to the container.
+builder.Services.AddDbContext<LunaContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//Dao
+builder.Services.AddScoped<AspNetUserDAO>();
+
+//Repository
+builder.Services.AddScoped<IAspNetUserRepository, AspNetUserRepository>();
+
 
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
