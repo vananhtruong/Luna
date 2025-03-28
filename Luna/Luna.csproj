@@ -76,6 +76,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LunaBusinessObject\LunaBusinessObject.csproj" />
+    <ProjectReference Include="..\LunaRepositories\LunaRepositories.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Data\LunaFeedbacksTrainning.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

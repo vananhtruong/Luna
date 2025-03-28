@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LunaBusinessObject\LunaBusinessObject.csproj" />
+    <ProjectReference Include="..\LunaDataAccessLayer\LunaDataAccessLayer.csproj" />
+  </ItemGroup>
+
 </Project>
