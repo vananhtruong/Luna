@@ -47,6 +47,7 @@ builder.Services.AddScoped<RoomOrdersDAO>();
 builder.Services.AddScoped<CustomerDAO>();
 builder.Services.AddScoped<RoomTypeDAO>();
 builder.Services.AddScoped<RoomDAO>();
+builder.Services.AddScoped<ChatMessageDAO>();
 
 //Repository
 builder.Services.AddScoped<IAspNetUserRepository, AspNetUserRepository>();
@@ -56,6 +57,7 @@ builder.Services.AddScoped<IRoomOrdersRepository, RoomOrdersRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<IChatMessageRepository, ChatMessageRepository>();
 
 
 

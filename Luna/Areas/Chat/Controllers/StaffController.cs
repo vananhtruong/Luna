@@ -3,6 +3,7 @@ using Luna.Data;
 using Luna.Models;
 using Luna.Services;
 using Luna.Utility;
+using LunaRepositories.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,14 @@ namespace Luna.Areas.Chat.Controllers
     [Authorize(Roles = Roles.Role_Consultant)]
     public class StaffController : Controller
     {
+        private readonly IChatMessageRepository _chatMessageRepository;
         private readonly ILogger<StaffController> _logger;
         private readonly AppDbContext _dbContext;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly GlobalService _globalService;
-        public StaffController(ILogger<StaffController> logger, AppDbContext dbContext, UserManager<IdentityUser> userManager, GlobalService globalService)
+        public StaffController(ILogger<StaffController> logger, AppDbContext dbContext, UserManager<IdentityUser> userManager, GlobalService globalService, IChatMessageRepository chatMessageRepository)
         {
+            _chatMessageRepository = chatMessageRepository;
             _logger = logger;
             _dbContext = dbContext;
             _userManager = userManager;
@@ -30,7 +33,7 @@ namespace Luna.Areas.Chat.Controllers
         public IActionResult Index()
         {
             var consultantId = _globalService.GetConsultantId();
-            var senderIds = _dbContext.ChatMessages
+            var senderIds = _chatMessageRepository.getAllMessages()
                                   .Where(m => m.SenderId != consultantId)
                                   .Select(cm => cm.SenderId)
                                   .Distinct()
@@ -51,7 +54,7 @@ namespace Luna.Areas.Chat.Controllers
                                User = user,
                                LastMessage = userMessage
                            }).ToList();
-            var unseenMessageCounts = _dbContext.ChatMessages
+            var unseenMessageCounts = _chatMessageRepository.getAllMessages()
                                     .Where(m => (bool)!m.IsSeen && m.SenderId != consultantId)
                                     .GroupBy(m => m.SenderId)
                                     .Select(g => new
