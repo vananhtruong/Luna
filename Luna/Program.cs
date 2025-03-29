@@ -44,12 +44,18 @@ builder.Services.AddScoped<AspNetUserDAO>();
 builder.Services.AddScoped<HotelOrderDAO>();
 builder.Services.AddScoped<FeedbackDAO>();
 builder.Services.AddScoped<RoomOrdersDAO>();
+builder.Services.AddScoped<CustomerDAO>();
+builder.Services.AddScoped<RoomTypeDAO>();
+builder.Services.AddScoped<RoomDAO>();
 
 //Repository
 builder.Services.AddScoped<IAspNetUserRepository, AspNetUserRepository>();
 builder.Services.AddScoped<IHotelOrderRepository, HotelOrderRepository>();
 builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
 builder.Services.AddScoped<IRoomOrdersRepository, RoomOrdersRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 
 
 

@@ -90,7 +90,6 @@ namespace Luna.Areas.Admin.Controllers
 
             PagedList<ApplicationUser> lst = new PagedList<ApplicationUser>(receptionists, pageNumber, pageSize);
 
-            //return View(receptionists);
             return View(lst);
         }
 
